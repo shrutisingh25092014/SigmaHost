@@ -163,7 +163,8 @@ public class ConnectFour {
 
 		int turn = 1;
 		int player=0;
-		boolean winner = false;		
+		boolean winner = false;	
+		String playerName="";
 
 		//play a turn
 		int turns=width*height;
@@ -172,9 +173,15 @@ public class ConnectFour {
 			for ( player = 0; turns-- > 0; player = 1 - player)		
 			{
 				boolean validPlay;
+				int playerNo=player+1;
 				int column;
+				
+				if(player==0)
+					playerName="GREEN";
+				else
+					playerName="YELLOW";
 				do {
-					System.out.print("Player " + PLAYER[player] + ", choose a column: ");
+					System.out.print("Player "+ playerNo+" ["+ playerName + "], choose a column(0-6): ");
 					column = in.nextInt();
 
 					validPlay = checkValidTurn(column,width);
@@ -200,7 +207,7 @@ public class ConnectFour {
 		connect.displayMatrix();
 
 		if (winner){ 
-			System.out.println("\nPlayer " + PLAYER[player] + " wins!");
+			System.out.println("\nPlayer " + playerName + " wins!");
 
 		}else{
 			System.out.println("Game Over. No winner.");

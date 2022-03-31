@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ConnectFour {
 
 	//Two dimensional matrix to represent Board
-	private  static char MATRIX[][]=new char[6][7];
+	private  static char MATRIX[][];
 	//Two players 'G' and 'Y' playing in alternate turns .
 	private static final char [] PLAYER= {'G','Y'} ;
 	//height ,width of board
@@ -23,6 +23,7 @@ public class ConnectFour {
 	{
 		width=w;
 		height=h;
+		MATRIX=new char[height][width];
 	}
 
 	//Initialize Board with Blank ' '
@@ -42,7 +43,6 @@ public class ConnectFour {
 				System.out.print("|");
 			}
 			System.out.println();
-			System.out.println("---------------");
 		}
 	}
 
@@ -53,7 +53,6 @@ public class ConnectFour {
 			System.out.println("Column must be between 0 and " + (width - 1));
 			return false;
 		}
-
 		if (MATRIX[0][column] != ' '){
 			System.out.println("Column " + column +" is full.");
 			return false;
@@ -92,8 +91,7 @@ public class ConnectFour {
 		}
 		if(count>=4)
 			return true;
-		return false;		
-
+		return false;	
 	}
 
 	//check horizontal sequence of 4 for player  
@@ -149,7 +147,6 @@ public class ConnectFour {
 		return false;
 	}
 
-
 	public static void main(String[] args) {
 
 		int width=7;
@@ -184,7 +181,6 @@ public class ConnectFour {
 
 				}while (validPlay == false);
 
-
 				//Push the color to the top of column
 				for (int row = MATRIX.length-1; row >= 0; row--){
 					if(MATRIX[row][column] == ' '){
@@ -200,7 +196,6 @@ public class ConnectFour {
 				if(winner)
 					break;
 			}
-
 		}
 		connect.displayMatrix();
 
@@ -212,6 +207,4 @@ public class ConnectFour {
 		}
 
 	}
-
-
 }
